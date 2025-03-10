@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HACKED BY ABU</title>
+    <style>
+        body {
+            background: black;
+            color: red;
+            font-size: 30px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            user-select: none;
+            cursor: none;
+            animation: flicker 1s infinite;
+        }
+
+        @keyframes flicker {
+            0% { background: black; }
+            50% { background: darkred; }
+            100% { background: black; }
+        }
+
+        #hackedText {
+            font-size: 50px;
+            font-weight: bold;
+            animation: glitch 0.3s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 5px 5px red, -5px -5px blue; }
+            100% { text-shadow: -5px -5px red, 5px 5px blue; }
+        }
+
+        #timer {
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        #log {
+            background: black;
+            color: lime;
+            font-family: monospace;
+            text-align: left;
+            width: 80%;
+            height: 200px;
+            overflow: hidden;
+            border: 2px solid lime;
+            padding: 10px;
+        }
+
+        #close-warning {
+            font-size: 20px;
+            color: yellow;
+            margin-top: 20px;
+            animation: warningBlink 0.5s infinite alternate;
+        }
+
+        @keyframes warningBlink {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .glitch {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            animation: glitch-img 0.2s infinite alternate;
+        }
+
+        @keyframes glitch-img {
+            0% { transform: translateX(2px); }
+            100% { transform: translateX(-2px); }
+        }
+
+        @keyframes shake {
+            0% { transform: translate(2px, 2px); }
+            25% { transform: translate(-2px, -2px); }
+            50% { transform: translate(2px, -2px); }
+            75% { transform: translate(-2px, 2px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="hackedText">🔥 HACKED BY ABU 🔥</h1>
+    <img src="10.jpg" alt="Hacker ABU" class="glitch">
+    
+    <h2>🔒 Your device is locked for</h2>
+    <div id="timer">60</div>
+    <h3>Scanning system files...</h3>
+    <div id="log"></div>
+    <h3 id="close-warning">⚠️ Do NOT close this tab! Data is being extracted... ⚠️</h3>
+
+    <audio id="creepyAudio" src="horror.mp3" loop></audio>
+
+    <script>
+        let timeLeft = 60;
+        let timerElement = document.getElementById("timer");
+        let logElement = document.getElementById("log");
+
+        let fakeLogs = [
+            "[+] Connecting to ABU's server...",
+            "[+] Accessing system files...",
+            "[!] Bypassing security firewall...",
+            "[+] Downloading private data...",
+            "[ERROR] System breach detected...",
+            "[!] Device compromised...",
+            "[+] Uploading data to Hack ABU...",
+            "[ERROR] Critical system failure...",
+            "[+] Encryption in progress..."
+        ];
+        
+        let fakeFiles = [
+            "passwords.txt", "bank-details.xlsx", "photos.zip", "system32.dll",
+            "wifi-passwords.txt", "bitcoin_wallet.dat", "personal-data.json",
+            "browser-history.log", "hacked_credentials.csv"
+        ];
+        
+        function typeLog(message, delay = 50) {
+            let index = 0;
+            function type() {
+                if (index < message.length) {
+                    logElement.innerHTML += message.charAt(index);
+                    index++;
+                    setTimeout(type, delay);
+                } else {
+                    logElement.innerHTML += "<br>";
+                }
+            }
+            type();
+        }
+
+        function addFakeLogs() {
+            let logIndex = 0;
+            setInterval(() => {
+                if (logIndex < fakeLogs.length) {
+                    typeLog(fakeLogs[logIndex]);
+                    logIndex++;
+                }
+            }, 1500);
+
+            setInterval(() => {
+                let file = fakeFiles[Math.floor(Math.random() * fakeFiles.length)];
+                logElement.innerHTML += "[+] Extracting " + file + "<br>";
+                logElement.scrollTop = logElement.scrollHeight;
+            }, 1200);
+        }
+
+        let countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.body.innerHTML = `
+                    <div style="background: blue; color: white; font-family: monospace; font-size: 25px; text-align: center; padding: 100px;">
+                        <h1>💀 SYSTEM CRITICAL ERROR 💀</h1>
+                        <p>A problem has been detected and Windows has been shut down to prevent damage to your computer.</p>
+                        <p>If this is the first time you've seen this error screen, restart your computer.</p>
+                        <p>Error Code: 0x0000DEAD</p>
+                        <p>🔄 Restarting System...</p>
+                    </div>
+                `;
+                setTimeout(() => {
+                    window.location.href = "https://your-fake-virus-page.com";
+                }, 5000);
+            }
+        }, 1000);
+
+        addFakeLogs();
+
+        // Play creepy audio
+        setTimeout(() => {
+            document.getElementById("creepyAudio").play();
+        }, 3000);
+
+        // Prevent Closing
+        document.addEventListener("contextmenu", (event) => event.preventDefault());
+        history.pushState(null, null, location.href);
+        window.onpopstate = () => history.go(1);
+
+        // Fake virus warning
+        setTimeout(() => {
+            alert("⚠️ WARNING! Your files are being encrypted...");
+        }, 5000);
+
+        // Disable keyboard input
+        document.onkeydown = (event) => event.preventDefault();
+
+        // Fullscreen mode
+        document.documentElement.requestFullscreen();
+
+        // Change browser title
+        let titles = ["⚠️ HACKED ⚠️", "ABU OWNS YOU", "ERROR 404", "SYSTEM FAILURE"];
+        setInterval(() => {
+            document.title = titles[Math.floor(Math.random() * titles.length)];
+        }, 3000);
+
+        // Screen shake effect
+        setInterval(() => {
+            document.body.style.animation = "shake 0.5s";
+            setTimeout(() => {
+                document.body.style.animation = "";
+            }, 500);
+        }, 5000);
+    </script>
+</body>
+</html>
